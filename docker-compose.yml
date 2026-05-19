@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: rivaldodev/bitnet_:latest
+    image: rivaldodev/bitnet-tools:latest
     environment:
       HF_REPO: ${HF_REPO:-microsoft/BitNet-b1.58-2B-4T-gguf}
       MODEL_DIR: ${MODEL_DIR:-/models/bitnet}
