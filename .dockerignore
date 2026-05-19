@@ -1,0 +1,10 @@
+.git
+.github
+build
+logs
+models
+**/*.pdb
+**/*.exe
+**/*.dll
+**/*.so
+**/*.dylib

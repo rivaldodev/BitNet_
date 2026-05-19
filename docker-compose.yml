@@ -1,0 +1,25 @@
+services:
+  bitnet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rivaldodev/bitnet_:latest
+    environment:
+      HF_REPO: ${HF_REPO:-microsoft/BitNet-b1.58-2B-4T-gguf}
+      MODEL_DIR: ${MODEL_DIR:-/models/bitnet}
+      MODEL_FILE: ${MODEL_FILE:-ggml-model-i2_s.gguf}
+      LLAMA_ARG_HOST: 0.0.0.0
+      LLAMA_ARG_PORT: ${LLAMA_ARG_PORT:-8080}
+      LLAMA_ARG_ALIAS: ${LLAMA_ARG_ALIAS:-bitnet}
+      LLAMA_ARG_CTX_SIZE: ${LLAMA_ARG_CTX_SIZE:-2048}
+      LLAMA_ARG_THREADS: ${LLAMA_ARG_THREADS:-2}
+      LLAMA_ARG_N_GPU_LAYERS: 0
+      LLAMA_ARG_CONT_BATCHING: 1
+    expose:
+      - "8080"
+    volumes:
+      - bitnet-models:/models/bitnet
+    restart: unless-stopped
+
+volumes:
+  bitnet-models:
